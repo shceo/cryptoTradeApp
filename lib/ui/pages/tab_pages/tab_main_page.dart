@@ -15,10 +15,15 @@ class MainPage extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: SvgPicture.asset(
-              'assets/icons/bell.svg',
-              height: 32,
-              width: 32,
+            child: GestureDetector(
+              onTap: () {
+                
+              },
+              child: SvgPicture.asset(
+                'assets/icons/bell.svg',
+                height: 32,
+                width: 32,
+              ),
             ),
           ),
         ],

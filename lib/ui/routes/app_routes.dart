@@ -5,5 +5,5 @@ abstract class AppRoutes {
   static const String profile = '/profile';
   static const String settingsP = '/settings';
   static const String localAuthPage = '/authLocal';
-  
+  static const String securityPage = '/security';
 }

@@ -1,5 +1,7 @@
+import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -67,7 +69,9 @@ class ProfileBody extends StatelessWidget {
           Column(
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                   context.go(AppRoutes.settingsP);
+                },
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 24),
                   child: Row(
