@@ -1,5 +1,5 @@
+import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
-
 
 class NavigationTabItem extends StatelessWidget {
   const NavigationTabItem({
@@ -22,7 +22,7 @@ class NavigationTabItem extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: active ? Colors.blue[700] : Colors.grey,
+            color: active ? CryptoColors.blue : CryptoColors.grey,
           ),
           const SizedBox(
             height: 7,

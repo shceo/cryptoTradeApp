@@ -1,4 +1,5 @@
 import 'package:crypto_trader/components/tab_bar_model.dart';
+import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,9 @@ class TabBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
+      // backgroundColor: CryptoColors.notblack,
       tabBar: CupertinoTabBar(
+        backgroundColor: CryptoColors.notblack,
         height: 70,
         items: const [
           BottomNavigationBarItem(
@@ -30,50 +33,50 @@ class TabBarWidget extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: NavigationTabItem(
-              icon: Icons.account_balance_outlined,
+              icon: Icons.account_balance_wallet,
               active: false,
               text: 'Баланс',
             ),
             activeIcon: NavigationTabItem(
-              icon: Icons.account_balance_outlined,
+              icon: Icons.account_balance_wallet,
               active: true,
               text: 'Баланс',
             ),
           ),
           BottomNavigationBarItem(
             icon: NavigationTabItem(
-              icon: Icons.abc,
+              icon: Icons.sync_alt,
               active: false,
-              text: '',
+              text: 'Перевести',
             ),
             activeIcon: NavigationTabItem(
-              icon: Icons.abc,
+              icon: Icons.sync_alt,
               active: true,
-              text: '',
+              text: 'Перевести',
             ),
           ),
           BottomNavigationBarItem(
             icon: NavigationTabItem(
-              icon: Icons.abc,
+              icon: Icons.signal_cellular_alt_rounded,
               active: false,
-              text: 'Подписки',
+              text: 'Биржа',
             ),
             activeIcon: NavigationTabItem(
-              icon: Icons.ad_units,
+              icon: Icons.signal_cellular_alt_rounded,
               active: true,
-              text: 'Подписки',
+              text: 'Биржа',
             ),
           ),
           BottomNavigationBarItem(
             icon: NavigationTabItem(
-              icon: Icons.abc,
+              icon: Icons.person_outline,
               active: false,
-              text: 'Вы',
+              text: 'Профиль',
             ),
             activeIcon: NavigationTabItem(
-              icon: Icons.ad_units,
+              icon: Icons.person_outline,
               active: true,
-              text: 'Вы',
+              text: 'Биржа',
             ),
           ),
         ],

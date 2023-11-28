@@ -8,15 +8,21 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CryptoColors.notblack,
+      appBar: AppBar(
+        toolbarHeight: 65,
         backgroundColor: CryptoColors.notblack,
-        appBar: AppBar(
-          backgroundColor: CryptoColors.notblack,
-          toolbarHeight: 40,
-          actions: [
-            SvgPicture.asset(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: SvgPicture.asset(
               'assets/icons/bell.svg',
+              height: 32,
+              width: 32,
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
