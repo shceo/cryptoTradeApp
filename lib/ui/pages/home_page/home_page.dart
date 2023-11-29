@@ -6,7 +6,6 @@ import 'package:crypto_trader/ui/pages/tab_pages/market_page.dart';
 import 'package:crypto_trader/ui/pages/tab_pages/profile.dart';
 import 'package:crypto_trader/ui/pages/tab_pages/tab_main_page.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CryptoHomePage extends StatelessWidget {
