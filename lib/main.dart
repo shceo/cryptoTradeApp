@@ -33,8 +33,13 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:dotenv/dotenv.dart' as dotenv;
+
 
 void main() async {
+  //await dotenv.load(fileName: '.env');    
+await dotenv.DotEnv();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -51,7 +56,7 @@ void main() async {
   //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   //
 
-  /*  await dotenv.load(fileName: '.env');      /// надо бы проверить */
+
 
   runApp(
     // провайдеры
