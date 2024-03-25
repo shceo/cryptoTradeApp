@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1097156908926",
+    "project_id": "ctb-wallet-d2e7f",
+    "storage_bucket": "ctb-wallet-d2e7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097156908926:android:a4b3f2fbd7bbaf397c452f",
+        "android_client_info": {
+          "package_name": "com.example.crypto_trader"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzzahRlXpiwwZHKe530DIrTYRtc16oEqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

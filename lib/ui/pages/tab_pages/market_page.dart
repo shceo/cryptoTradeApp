@@ -1,0 +1,316 @@
+import 'package:crypto_trader/components/tabs/custom_tab_bar.dart';
+import 'package:crypto_trader/domain/api/api.dart';
+import 'package:crypto_trader/domain/models/crytpo_coin.dart';
+import 'package:crypto_trader/ui/routes/app_routes.dart';
+import 'package:crypto_trader/ui/theme/crypto_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class MarketPage extends StatelessWidget {
+  const MarketPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Scaffold(
+        backgroundColor: CryptoColors.notblack,
+        appBar: AppBar(
+          toolbarHeight: 100,
+          backgroundColor: CryptoColors.notblack,
+          title: FutureBuilder<double>(
+            future: calculateMarketChange(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Text('Загрузка...');
+              } else if (snapshot.hasError) {
+                return Text(
+                  'Ошибка загрузки',
+                  style: TextStyle(color: CryptoColors.notwhite),
+                );
+              } else {
+                final marketChange = snapshot.data!;
+                final marketTrendText =
+                    marketChange < 0 ? 'Рынок упал на ' : 'Рынок поднялся на ';
+                final marketChangePercentage =
+                    marketChange.abs().toStringAsFixed(2) + '%';
+                return RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: marketTrendText,
+                        style: TextStyle(
+                            fontSize: 18, color: CryptoColors.trueWhite),
+                      ),
+                      TextSpan(
+                        text: marketChangePercentage,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: marketChange < 0 ? Colors.red : Colors.green,
+                        ),
+                      ),
+                      TextSpan(
+                        text: '\nотчет за последние 24 часа',
+                        style:
+                            TextStyle(fontSize: 10, color: CryptoColors.grey),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.go(AppRoutes.search);
+              },
+              icon: Icon(
+                Icons.search_rounded,
+                size: 30,
+                color: CryptoColors.trueWhite,
+              ),
+            ),
+          ],
+        ),
+        body: const MarketPageBody(),
+      ),
+    );
+  }
+}
+
+@override
+Size get preferredSize => const Size.fromHeight(100);
+
+class MarketPageBody extends StatelessWidget {
+  const MarketPageBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: CryptoColors.notblack,
+      child: DefaultTabController(
+        length: 4,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // const SizedBox(
+            //   height: 15,
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: Text(
+                'Криптовалюты',
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    color: CryptoColors.trueWhite,
+                    fontStyle: FontStyle.normal),
+              ),
+            ),
+            CustomTabBar(),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  FutureBuilder<List<CryptoCoin>>(
+                    future: CryptoCoinRepository().getCryptoCoinList(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text('Ошибка: ${snapshot.error}'));
+                      } else if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            final coin = snapshot.data![index];
+                            return ListTile(
+                                title: Text(
+                                  coin.symbol,
+                                  style:
+                                      TextStyle(color: CryptoColors.notwhite),
+                                ),
+                                subtitle: Text(
+                                  '${coin.name}',
+                                  style: TextStyle(color: CryptoColors.grey),
+                                ),
+                                leading: Image.network(coin.image),
+                                trailing: RichText(
+                                  textAlign: TextAlign.end,
+                                  text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text:
+                                            '${coin.change > 0 ? 'Вырос на' : 'Упал на'}: ',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: CryptoColors.notwhite,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            '${coin.change.toStringAsFixed(2)} %',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: coin.change > 0
+                                              ? CryptoColors.graphGreen
+                                              : CryptoColors.graphRed,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ));
+                          },
+                        );
+                      } else {
+                        return Center(child: Text('Нет данных'));
+                      }
+                    },
+                  ),
+                  FutureBuilder<List<CryptoCoin>>(
+                    future: CryptoCoinRepository().getCryptoCoinList(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text('Ошибка: ${snapshot.error}'));
+                      } else if (snapshot.hasData) {
+                        final growingCoins = snapshot.data!
+                            .where((coin) => coin.change > 0)
+                            .toList();
+                        return ListView.builder(
+                          itemCount: growingCoins.length,
+                          itemBuilder: (context, index) {
+                            final coin = growingCoins[index];
+                            return ListTile(
+                                title: Text(
+                                  coin.symbol,
+                                  style:
+                                      TextStyle(color: CryptoColors.notwhite),
+                                ),
+                                subtitle: Text(
+                                  '${coin.name}',
+                                  style: TextStyle(color: CryptoColors.grey),
+                                ),
+                                leading: Image.network(coin.image),
+                                trailing: RichText(
+                                  textAlign: TextAlign.end,
+                                  text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text:
+                                            '${coin.change > 0 ? 'Вырос на' : ''} ',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: CryptoColors.notwhite,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            '${coin.change.toStringAsFixed(2)} %',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: coin.change > 0
+                                              ? CryptoColors.graphGreen
+                                              : CryptoColors.graphRed,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ));
+                          },
+                        );
+                      } else {
+                        return Center(child: Text('Нет данных'));
+                      }
+                    },
+                  ),
+                  FutureBuilder<List<CryptoCoin>>(
+                    future: CryptoCoinRepository().getCryptoCoinList(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text('Ошибка: ${snapshot.error}'));
+                      } else if (snapshot.hasData) {
+                        final growingCoins = snapshot.data!
+                            .where((coin) => coin.change < 0)
+                            .toList();
+                        return ListView.builder(
+                          itemCount: growingCoins.length,
+                          itemBuilder: (context, index) {
+                            final coin = growingCoins[index];
+                            return ListTile(
+                                title: Text(
+                                  coin.symbol,
+                                  style:
+                                      TextStyle(color: CryptoColors.notwhite),
+                                ),
+                                subtitle: Text(
+                                  '${coin.name}',
+                                  style: TextStyle(color: CryptoColors.grey),
+                                ),
+                                leading: Image.network(coin.image),
+                                trailing: RichText(
+                                  textAlign: TextAlign.end,
+                                  text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text:
+                                            '${coin.change < 0 ? 'Упал на' : ''} ',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: CryptoColors.notwhite,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            '${coin.change.toStringAsFixed(2)} %',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: coin.change > 0
+                                              ? CryptoColors.graphGreen
+                                              : CryptoColors.graphRed,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ));
+                          },
+                        );
+                      } else {
+                        return Center(child: Text('Нет данных'));
+                      }
+                    },
+                  ),
+                  Container(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/favoriteim.png',
+                          ),
+                          Text(
+                            'Специальное окно для ваших любимых криптовалют!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 15, color: CryptoColors.trueWhite),
+                          ),
+                          Text(
+                            'Добавьте ваши любимые криптовалюты и проверяйте с легкостью!',
+                            style: TextStyle(
+                                fontSize: 10, color: CryptoColors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
