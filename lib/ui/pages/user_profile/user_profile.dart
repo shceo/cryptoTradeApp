@@ -1,3 +1,25 @@
+// The MIT License (MIT)
+
+// Copyright (c) 2023-2024 Ame Studio and shceo
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 import 'package:crypto_trader/providers/image_picker_provider.dart';
 import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
@@ -77,11 +99,11 @@ class UserProfileBody extends StatelessWidget {
                   bottom: 15.0,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: CryptoColors.notwhite, 
-                      shape: BoxShape.circle, 
+                      color: CryptoColors.notwhite,
+                      shape: BoxShape.circle,
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(8.0), 
+                      padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.edit, size: 33, color: Colors.blue),
                     ),
                   ),
