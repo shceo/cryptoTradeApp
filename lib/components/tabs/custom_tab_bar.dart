@@ -2,7 +2,7 @@ import 'package:crypto_trader/components/tabs/tab_indecator.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../providers/tab_bar_model.dart';
+import '../../domain/providers/tab_bar_model.dart';
 
 class CustomTabBar extends StatelessWidget {
   @override

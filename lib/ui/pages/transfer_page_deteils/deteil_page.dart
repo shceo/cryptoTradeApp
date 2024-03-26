@@ -1,4 +1,4 @@
-import 'package:crypto_trader/providers/currencyvswindow.dart';
+import 'package:crypto_trader/domain/providers/currencyvswindow.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';

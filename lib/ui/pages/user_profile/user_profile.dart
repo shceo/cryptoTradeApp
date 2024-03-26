@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import 'package:crypto_trader/providers/image_picker_provider.dart';
+import 'package:crypto_trader/domain/providers/image_picker_provider.dart';
 import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';

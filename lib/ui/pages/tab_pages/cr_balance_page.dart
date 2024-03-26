@@ -20,10 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import 'package:crypto_trader/domain/providers/userbalance_provider.dart';
 import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CrBalancePage extends StatelessWidget {
   const CrBalancePage({super.key});
@@ -46,6 +48,7 @@ class CrBalanceBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userAccount = Provider.of<UserAccount>(context);
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -80,14 +83,15 @@ class CrBalanceBody extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: '0 \$',
+                      text: '${userAccount.balance} \$',
                       style: TextStyle(
                         color: CryptoColors.trueWhite,
                         fontSize: 28,
                       ),
                     ),
-                    const TextSpan(
-                      text: '\t +0 %',
+                    TextSpan(
+                      text:
+                          '\t ${userAccount.percentChange.toStringAsFixed(2)}%',
                       style: TextStyle(
                           color: Color.fromRGBO(255, 255, 255, 0.68),
                           fontSize: 14),

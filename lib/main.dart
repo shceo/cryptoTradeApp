@@ -21,24 +21,23 @@
 // SOFTWARE.
 
 import 'package:crypto_trader/crypto_app.dart';
-import 'package:crypto_trader/providers/add_card_provider.dart';
-import 'package:crypto_trader/providers/aisoon_provider.dart';
-import 'package:crypto_trader/providers/currencyvswindow.dart';
-import 'package:crypto_trader/providers/image_picker_provider.dart';
-import 'package:crypto_trader/providers/settingsmodels_provider.dart';
-import 'package:crypto_trader/providers/tab_bar_model.dart';
+import 'package:crypto_trader/domain/providers/add_card_provider.dart';
+import 'package:crypto_trader/domain/providers/aisoon_provider.dart';
+import 'package:crypto_trader/domain/providers/currencyvswindow.dart';
+import 'package:crypto_trader/domain/providers/image_picker_provider.dart';
+import 'package:crypto_trader/domain/providers/settingsmodels_provider.dart';
+import 'package:crypto_trader/domain/providers/tab_bar_model.dart';
+import 'package:crypto_trader/domain/providers/userbalance_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:dotenv/dotenv.dart' as dotenv;
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  //await dotenv.load(fileName: '.env');    
-await dotenv.DotEnv();
+  await dotenv.load(fileName: '.env');
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -52,15 +51,12 @@ await dotenv.DotEnv();
       await path_provider.getApplicationDocumentsDirectory();
   Hive.initFlutter(appDocumentDirectory.path);
 
-  // SystemChrome.setPreferredOrientations(
-  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  //
-
-
+  /// установка ориентации
+  /*SystemChrome.setPreferredOrientations( 
+  [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]); */
 
   runApp(
-    // провайдеры
-
+    /// [AppProviders]
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -75,6 +71,7 @@ await dotenv.DotEnv();
         ChangeNotifierProvider(create: (context) => thremonthtoget()),
         ChangeNotifierProvider(create: (context) => CardModel()),
         ChangeNotifierProvider(create: (context) => CurrencyModel()),
+        ChangeNotifierProvider(create: (context) => UserAccount()),
       ],
       child: const CryptoApp(),
     ),
