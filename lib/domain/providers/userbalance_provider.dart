@@ -4,9 +4,11 @@ class UserAccount extends ChangeNotifier {
   double _balance = 0.0;
   double _previousBalance = 0.0;
   double _percentChange = 0.0;
+  double _investments = 0.0;
 
   double get balance => _balance;
   double get percentChange => _percentChange;
+  double get investments => _investments;
 
   void deposit(double amount) {
     _previousBalance = _balance;
@@ -23,6 +25,11 @@ class UserAccount extends ChangeNotifier {
     } else {
       print('Insufficient balance');
     }
+    notifyListeners();
+  }
+
+  void invest(double amount) {
+    _investments += amount;
     notifyListeners();
   }
 

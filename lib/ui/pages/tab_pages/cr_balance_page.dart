@@ -50,6 +50,7 @@ class CrBalanceBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final userAccount = Provider.of<UserAccount>(context);
     double screenWidth = MediaQuery.of(context).size.width;
+    
 
     return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       Container(
@@ -113,7 +114,7 @@ class CrBalanceBody extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: '0 \$',
+                      text: '${userAccount.investments} \$',
                       style: TextStyle(
                           color: CryptoColors.trueWhite, fontSize: 14),
                     ),

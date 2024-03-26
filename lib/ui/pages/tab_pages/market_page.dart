@@ -23,10 +23,12 @@
 import 'package:crypto_trader/components/tabs/custom_tab_bar.dart';
 import 'package:crypto_trader/domain/api/api.dart';
 import 'package:crypto_trader/domain/models/crytpo_coin.dart';
+import 'package:crypto_trader/domain/providers/favoritelist_provider.dart';
 import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class MarketPage extends StatelessWidget {
   const MarketPage({Key? key}) : super(key: key);
@@ -115,9 +117,6 @@ class MarketPageBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // const SizedBox(
-            //   height: 15,
-            // ),
             Padding(
               padding: const EdgeInsets.only(left: 16.0),
               child: Text(
@@ -304,28 +303,83 @@ class MarketPageBody extends StatelessWidget {
                       }
                     },
                   ),
-                  Container(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/favoriteim.png',
-                          ),
-                          Text(
-                            'Специальное окно для ваших любимых криптовалют!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 15, color: CryptoColors.trueWhite),
-                          ),
-                          Text(
-                            'Добавьте ваши любимые криптовалюты и проверяйте с легкостью!',
-                            style: TextStyle(
-                                fontSize: 10, color: CryptoColors.grey),
-                          ),
-                        ],
-                      ),
-                    ),
+                  Consumer<FavoritesProvider>(
+                    builder: (context, favoritesProvider, child) {
+                      final isFavoriteEmpty =
+                          favoritesProvider.favorites.isEmpty;
+
+                      return isFavoriteEmpty
+                          ? Container(
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/favoriteim.png',
+                                    ),
+                                    Text(
+                                      'Специальное окно для ваших любимых криптовалют!',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: CryptoColors.trueWhite,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Добавьте ваши любимые криптовалюты и проверяйте с легкостью!',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: CryptoColors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          : Column(
+                              children: [
+                                // Кнопка "Очистить избранное"
+
+                                Expanded(
+                                  child: ListView.builder(
+                                    // Отображение криптовалют из избранных
+                                    itemCount:
+                                        favoritesProvider.favorites.length,
+                                    itemBuilder: (context, index) {
+                                      final favoriteCoin =
+                                          favoritesProvider.favorites[index];
+                                      return ListTile(
+                                        title: Text(
+                                          favoriteCoin.symbol,
+                                          style: TextStyle(
+                                              color: CryptoColors.notwhite),
+                                        ),
+                                        subtitle: Text(
+                                          favoriteCoin.name,
+                                          style: TextStyle(
+                                              color: CryptoColors.grey),
+                                        ),
+                                        leading:
+                                            Image.network(favoriteCoin.image),
+                                        onTap: () {
+                                          // Обработка нажатия на криптовалюту из избранного
+                                          favoritesProvider.removeFromFavorites(
+                                              favoriteCoin);
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+
+                                ElevatedButton(
+                                  onPressed: () {
+                                    favoritesProvider.clearFavorites();
+                                  },
+                                  child: Text('Очистить избранное'),
+                                ),
+                              ],
+                            );
+                    },
                   ),
                 ],
               ),

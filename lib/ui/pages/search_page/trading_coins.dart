@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class TradingCoins extends StatelessWidget {
-  const TradingCoins({super.key});
+  const TradingCoins({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     context.read<CryptoBlocBloc>().add(CryptoLoadList());
@@ -17,61 +18,61 @@ class TradingCoins extends StatelessWidget {
           if (state is CryptoBlocIsLoaded) {
             final _cryptoCoinsList = state.coinsList;
             return ListView.separated(
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, i) {
-                  return Hero(
-                    tag: 'tag${i}',
-                    child: ListTile(
-                      onTap: (() {
-                        context.go('${AppRoutes.cryptoPage}/${i}');
-                      }),
-                      leading: Image.network(_cryptoCoinsList[i].image),
-                      title: Text(
-                        _cryptoCoinsList[i].name,
-                        style: TextStyle(color: CryptoColors.trueWhite),
-                      ),
-                      subtitle: Text(_cryptoCoinsList[i].symbol),
-                      trailing: SizedBox(
-                        width: 100,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '${_cryptoCoinsList[i].price.toStringAsFixed(3)} \$',
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                  fontSize: 16, color: CryptoColors.trueWhite),
-                            ), 
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              '${_cryptoCoinsList[i].change.toStringAsFixed(2)} %',
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: _cryptoCoinsList[i].change > 0
-                                    ? CryptoColors.graphGreen
-                                    : CryptoColors.graphRed,
-                              ),
-                            )
-                          ],
+              physics: const ScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, i) {
+                return ListTile(
+                  onTap: () {
+                    context.go('${AppRoutes.cryptoPage}/${i}');
+                  },
+                  leading: Image.network(_cryptoCoinsList[i].image),
+                  title: Text(
+                    _cryptoCoinsList[i].name,
+                    style: TextStyle(color: CryptoColors.trueWhite),
+                  ),
+                  subtitle: Text(_cryptoCoinsList[i].symbol),
+                  trailing: SizedBox(
+                    width: 100,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '${_cryptoCoinsList[i].price.toStringAsFixed(3)} \$',
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: CryptoColors.trueWhite,
+                          ),
                         ),
-                      ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          '${_cryptoCoinsList[i].change.toStringAsFixed(2)} %',
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: _cryptoCoinsList[i].change > 0
+                                ? CryptoColors.graphGreen
+                                : CryptoColors.graphRed,
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                },
-                separatorBuilder: (context, index) => const SizedBox(
-                      height: 8,
-                    ),
-                itemCount: _cryptoCoinsList.length);
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 8,
+              ),
+              itemCount: _cryptoCoinsList.length,
+            );
           } else if (state is CryptoBlocLoadingFailure) {
             return Center(
               child: Column(
                 children: [
                   const Text(
-                    'Что то пошло не так',
+                    'Что-то пошло не так',
                     style: TextStyle(fontSize: 28, color: Colors.white),
                   ),
                   const SizedBox(
@@ -102,5 +103,3 @@ class TradingCoins extends StatelessWidget {
     );
   }
 }
-
-//

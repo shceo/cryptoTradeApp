@@ -24,6 +24,7 @@ import 'package:crypto_trader/crypto_app.dart';
 import 'package:crypto_trader/domain/providers/add_card_provider.dart';
 import 'package:crypto_trader/domain/providers/aisoon_provider.dart';
 import 'package:crypto_trader/domain/providers/currencyvswindow.dart';
+import 'package:crypto_trader/domain/providers/favoritelist_provider.dart';
 import 'package:crypto_trader/domain/providers/image_picker_provider.dart';
 import 'package:crypto_trader/domain/providers/settingsmodels_provider.dart';
 import 'package:crypto_trader/domain/providers/tab_bar_model.dart';
@@ -72,6 +73,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => CardModel()),
         ChangeNotifierProvider(create: (context) => CurrencyModel()),
         ChangeNotifierProvider(create: (context) => UserAccount()),
+        ChangeNotifierProvider(create: (_) => FavoritesProvider()),
       ],
       child: const CryptoApp(),
     ),
