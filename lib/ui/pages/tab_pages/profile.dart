@@ -421,6 +421,7 @@ class ProfileBody extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 Future<String> _loadImage() async {
   final box = await Hive.openBox('images');
   final imagePath = box.get('imagePath') as String;

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
+
 class TradingCoins extends StatelessWidget {
   const TradingCoins({Key? key}) : super(key: key);
 
@@ -25,7 +27,11 @@ class TradingCoins extends StatelessWidget {
                   onTap: () {
                     context.go('${AppRoutes.cryptoPage}/${i}');
                   },
-                  leading: Image.network(_cryptoCoinsList[i].image),
+                  leading: CachedNetworkImage(
+                    imageUrl: _cryptoCoinsList[i].image,
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
                   title: Text(
                     _cryptoCoinsList[i].name,
                     style: TextStyle(color: CryptoColors.trueWhite),

@@ -29,6 +29,7 @@ import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MarketPage extends StatelessWidget {
   const MarketPage({Key? key}) : super(key: key);
@@ -154,7 +155,13 @@ class MarketPageBody extends StatelessWidget {
                                   '${coin.name}',
                                   style: TextStyle(color: CryptoColors.grey),
                                 ),
-                                leading: Image.network(coin.image),
+                                leading: CachedNetworkImage(
+                                  imageUrl: coin.image,
+                                  placeholder: (context, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ),
                                 trailing: RichText(
                                   textAlign: TextAlign.end,
                                   text: TextSpan(
@@ -212,7 +219,13 @@ class MarketPageBody extends StatelessWidget {
                                   '${coin.name}',
                                   style: TextStyle(color: CryptoColors.grey),
                                 ),
-                                leading: Image.network(coin.image),
+                                leading: CachedNetworkImage(
+                                  imageUrl: coin.image,
+                                  placeholder: (context, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ),
                                 trailing: RichText(
                                   textAlign: TextAlign.end,
                                   text: TextSpan(
@@ -270,7 +283,13 @@ class MarketPageBody extends StatelessWidget {
                                   '${coin.name}',
                                   style: TextStyle(color: CryptoColors.grey),
                                 ),
-                                leading: Image.network(coin.image),
+                                leading: CachedNetworkImage(
+                                  imageUrl: coin.image,
+                                  placeholder: (context, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ),
                                 trailing: RichText(
                                   textAlign: TextAlign.end,
                                   text: TextSpan(
@@ -338,11 +357,8 @@ class MarketPageBody extends StatelessWidget {
                             )
                           : Column(
                               children: [
-                                // Кнопка "Очистить избранное"
-
                                 Expanded(
                                   child: ListView.builder(
-                                    // Отображение криптовалют из избранных
                                     itemCount:
                                         favoritesProvider.favorites.length,
                                     itemBuilder: (context, index) {
@@ -359,10 +375,14 @@ class MarketPageBody extends StatelessWidget {
                                           style: TextStyle(
                                               color: CryptoColors.grey),
                                         ),
-                                        leading:
-                                            Image.network(favoriteCoin.image),
+                                        leading: CachedNetworkImage(
+                                          imageUrl: favoriteCoin.image,
+                                          placeholder: (context, url) =>
+                                              CircularProgressIndicator(),
+                                          errorWidget: (context, url, error) =>
+                                              Icon(Icons.error),
+                                        ),
                                         onTap: () {
-                                          // Обработка нажатия на криптовалюту из избранного
                                           favoritesProvider.removeFromFavorites(
                                               favoriteCoin);
                                         },
@@ -370,7 +390,6 @@ class MarketPageBody extends StatelessWidget {
                                     },
                                   ),
                                 ),
-
                                 ElevatedButton(
                                   onPressed: () {
                                     favoritesProvider.clearFavorites();

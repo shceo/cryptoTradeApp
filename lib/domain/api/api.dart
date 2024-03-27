@@ -1,6 +1,8 @@
 import 'package:crypto_trader/domain/models/crypto_history.dart';
 import 'package:crypto_trader/domain/models/crytpo_coin.dart';
 import 'package:dio/dio.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 
 class CryptoCoinRepository {
   CryptoCoinRepository();
@@ -18,13 +20,13 @@ class CryptoCoinRepository {
     return crytpoHistory;
   }
 
-  Future<List<CryptoCoin>> getCryptoCoinList() async {
+Future<List<CryptoCoin>> getCryptoCoinList() async {
     final dio = Dio();
     final response =
         await dio.get('https://api.coincap.io/v2/assets', queryParameters: {});
     final json = response.data as Map<String, dynamic>;
     final data = json['data'] as List;
-    final cryptolist = data.map((e) {
+    final cryptoList = data.map((e) {
       final list;
       if (e['symbol'] == 'IOTA') {
         list = 'iotx';
@@ -32,19 +34,18 @@ class CryptoCoinRepository {
         list = e['symbol'].toString().toLowerCase();
       }
       return CryptoCoin(
-          name: e['name'],
-          symbol: e['symbol'],
-          price: double.parse(
-            e['priceUsd'],
-          ),
-          image: 'https://assets.coincap.io/assets/icons/${list}@2x.png',
-          rank: int.parse(e['rank']),
-          change: double.parse(e['changePercent24Hr']));
+        name: e['name'],
+        symbol: e['symbol'],
+        price: double.parse(e['priceUsd']),
+        image: 'https://assets.coincap.io/assets/icons/${list}@2x.png',
+        rank: int.parse(e['rank']),
+        change: double.parse(e['changePercent24Hr']),
+      );
     }).toList();
-    return cryptolist;
+    return cryptoList;
   }
-}
 
+}
 Future<double> calculateMarketChange() async {
   final repository = CryptoCoinRepository();
   final cryptolist = await repository.getCryptoCoinList();
@@ -56,3 +57,4 @@ Future<double> calculateMarketChange() async {
 }
 
 // запросы к серверу
+

@@ -118,24 +118,6 @@ class MainPageBody extends StatelessWidget {
           height: 30,
         ),
 
-        // crypto slider
-
-        // FutureBuilder<List<CryptoCoin>>(
-        //   future: CryptoCoinRepository().getCryptoCoinList(),
-        //   builder: (context, snapshot) {
-        //     if (snapshot.connectionState == ConnectionState.done) {
-        //       if (snapshot.hasError) {
-        //         return Text('Ошибка: ${snapshot.error}');
-        //       }
-
-        //       final cryptolist = snapshot.data!;
-        //       return SliderCst(cryptoData: cryptolist);
-        //     } else {
-        //       return CircularProgressIndicator();
-        //     }
-        //   },
-        // ),
-
         SliderCst(),
 // корусель в главном экране
 
