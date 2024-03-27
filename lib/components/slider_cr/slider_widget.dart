@@ -37,18 +37,30 @@ class SliderCst extends StatelessWidget {
                         width: 50,
                         height: 50,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            crypto.name, // Название криптовалюты
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(
-                            '\$${crypto.price.toStringAsFixed(2)}', // Цена криптовалюты
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              crypto.name,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 19.5, color: CryptoColors.notwhite),
+                            ),
+                            Text(
+                              '${cryptoList.first.symbol}',
+                              style: TextStyle(
+                                  fontSize: 12, color: CryptoColors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        '\$${crypto.price.toStringAsFixed(2)}',
+                        style: TextStyle(
+                            fontSize: 16, color: CryptoColors.notwhite),
                       ),
                     ],
                   ),
