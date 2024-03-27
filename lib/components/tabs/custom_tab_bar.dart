@@ -20,10 +20,10 @@ class CustomTabBar extends StatelessWidget {
             unselectedLabelColor: CryptoColors.grey,
             labelColor: CryptoColors.blue,
             tabs: const [
-              Tab(text: 'All',),
-              Tab(text: 'Gainer'),
-              Tab(text: 'Loser'),
-              Tab(text: 'Favorite'),
+              Tab(text: 'Все',),
+              Tab(text: 'Растущий'), //Апрекиация
+              Tab(text: 'Дефляция'),
+              Tab(text: 'Любимые'),
             ],
           ),
         );

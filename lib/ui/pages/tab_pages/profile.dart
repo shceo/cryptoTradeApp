@@ -310,7 +310,52 @@ class ProfileBody extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 60,
+                height: 30,
+              ),
+              Container(
+                width: myWidth * 0.91,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: CryptoColors.grey.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.currency_bitcoin_outlined,
+                                size: 30,
+                                color: CryptoColors.notwhite,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 12.0),
+                                child: Text(
+                                  'P2P [person to person]',
+                                  style: TextStyle(
+                                      color: CryptoColors.notwhite,
+                                      fontSize: 20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
               ),
               Container(
                 width: myWidth * 0.91,
