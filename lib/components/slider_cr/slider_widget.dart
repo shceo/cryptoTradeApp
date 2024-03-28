@@ -14,12 +14,14 @@ class SliderCst extends StatelessWidget {
     return BlocBuilder<CryptoBlocBloc, CryptoBlocState>(
       builder: (context, state) {
         if (state is CryptoBlocIsLoaded) {
-          List<CryptoCoin> cryptoList = state.coinsList;
-
+          List<CryptoCoin> cryptoList = state.coinsList.sublist(0, 4);
           return CarouselSlider.builder(
             itemCount: cryptoList.length,
             itemBuilder: (context, index, pageViewIndex) {
               CryptoCoin crypto = cryptoList[index];
+
+              Color priceColor = crypto.change >= 0 ? CryptoColors.graphGreen : CryptoColors.graphRed;
+
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(13)),
@@ -49,7 +51,7 @@ class SliderCst extends StatelessWidget {
                                   fontSize: 19.5, color: CryptoColors.notwhite),
                             ),
                             Text(
-                              '${cryptoList.first.symbol}',
+                              '${crypto.symbol}',
                               style: TextStyle(
                                   fontSize: 12, color: CryptoColors.grey),
                             ),
@@ -60,7 +62,7 @@ class SliderCst extends StatelessWidget {
                       Text(
                         '\$${crypto.price.toStringAsFixed(2)}',
                         style: TextStyle(
-                            fontSize: 16, color: CryptoColors.notwhite),
+                            fontSize: 16, color: priceColor),
                       ),
                     ],
                   ),
