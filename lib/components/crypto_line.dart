@@ -16,7 +16,7 @@ class CryptoLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<CryptoHistoryBlocBloc>().add(
+context.read<CryptoHistoryBlocBloc>().add(
           CryptoHistoryBlocIntervalEvent(name: name, interval: 'm5'),
         );
 
@@ -29,8 +29,10 @@ class CryptoLine extends StatelessWidget {
             return Center(child: Text('Нет данных'));
           }
 
-          final minY = historyList.map((e) => e.price).reduce((a, b) => a < b ? a : b);
-          final maxY = historyList.map((e) => e.price).reduce((a, b) => a > b ? a : b);
+          final minY =
+              historyList.map((e) => e.price).reduce((a, b) => a < b ? a : b);
+          final maxY =
+              historyList.map((e) => e.price).reduce((a, b) => a > b ? a : b);
 
           return LineChart(
             LineChartData(
@@ -40,12 +42,19 @@ class CryptoLine extends StatelessWidget {
               maxY: maxY,
               lineTouchData: LineTouchData(enabled: touch),
               titlesData: FlTitlesData(show: false),
-              gridData: FlGridData(show: true, drawVerticalLine: false, drawHorizontalLine: false),
+              gridData: FlGridData(
+                  show: true,
+                  drawVerticalLine: false,
+                  drawHorizontalLine: false),
               borderData: FlBorderData(show: false),
               lineBarsData: [
                 LineChartBarData(
-                  spots: historyList.map((e) => FlSpot(e.time.toDouble(), e.price)).toList(),
-                  color: historyList.first.price <= historyList.last.price ? CryptoColors.graphGreen :CryptoColors.graphRed,
+                  spots: historyList
+                      .map((e) => FlSpot(e.time.toDouble(), e.price))
+                      .toList(),
+                  color: historyList.first.price <= historyList.last.price
+                      ? CryptoColors.graphGreen
+                      : CryptoColors.graphRed,
                   barWidth: 3,
                   dotData: FlDotData(show: false),
                   belowBarData: BarAreaData(show: false),
