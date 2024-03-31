@@ -36,7 +36,7 @@ class CryptoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
+           providers: [
         BlocProvider(
           create: (context) => SplashBloc()..add(AppStarted()),
         ),
@@ -47,6 +47,7 @@ class CryptoApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
+        locale: Locale('ru'),  /// [Localization] русский
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

@@ -1,1 +1,16 @@
-{}
+{
+    "@@locale": "uz",
+    "profile": "Profil",
+    "email": "Elektron pochta",
+    "phoneNumber": "+1.... Telefon raqami",
+    "settings": "Sozlamalar",
+    "identityVerification": "Shaxsiylikni tasdiqlash",
+    "ctbAI": "CTB AI",
+    "security": "Xavfsizlik",
+    "helpAndSupport": "Yordam & Qollab-quvvatlash",
+    "p2p": "Shaxsdan shaxsga [P2P]",
+    "feedback": "Fikr-mulohaza",
+    "publicOffer": "Ommaviy taklif",
+    "signOut": "Chiqish"
+  }
+  

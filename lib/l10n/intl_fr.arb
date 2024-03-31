@@ -1,1 +1,15 @@
-{}
+{
+  "@@locale": "fr",
+  "profile": "Profil",
+  "email": "email",
+  "phoneNumber": "+1.... numéro de téléphone",
+  "settings": "Paramètres",
+  "identityVerification": "Vérification de lidentité",
+  "ctbAI": "CTB AI",
+  "security": "Sécurité",
+  "helpAndSupport": "Aide & Support",
+  "p2p": "P2P [personne à personne]",
+  "feedback": "Retour dinformation",
+  "publicOffer": "Offre publique",
+  "signOut": "Déconnexion"
+}

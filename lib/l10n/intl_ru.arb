@@ -1,1 +1,15 @@
-{}
+{
+  "@@locale": "ru",
+  "profile": "Профиль",
+  "email": "электронная почта",
+
+  "settings": "Настройки",
+  "identityVerification": "Идентификация личности",
+  "ctbAI": "CTB AI",
+  "security": "Безопасность",
+  "helpAndSupport": "Помощь & Поддержка",
+  "p2p": "P2P [person to person]",
+  "feedback": "Обратная связь",
+  "publicOffer": "Публичная оферта",
+  "signOut": "Выйти с аккаунта"
+}
