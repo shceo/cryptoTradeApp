@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import 'package:crypto_trader/ui/pages/crypto_app_body/app_body.dart';
-import 'package:crypto_trader/components/tab_models/tab_bar_widget.dart';
+import 'package:crypto_trader/components/navbar_models/nav_bar_widget.dart';
 import 'package:crypto_trader/ui/pages/tab_pages/cr_balance_page.dart';
 import 'package:crypto_trader/ui/pages/tab_pages/transfer_page.dart';
 import 'package:crypto_trader/ui/pages/tab_pages/market_page.dart';

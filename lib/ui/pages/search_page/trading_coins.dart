@@ -46,7 +46,7 @@ class TradingCoins extends StatelessWidget {
                           '${_cryptoCoinsList[i].price.toStringAsFixed(3)} \$',
                           textAlign: TextAlign.end,
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 15,
                             color: CryptoColors.trueWhite,
                           ),
                         ),

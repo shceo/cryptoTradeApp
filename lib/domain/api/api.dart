@@ -1,8 +1,6 @@
 import 'package:crypto_trader/domain/models/crypto_history.dart';
 import 'package:crypto_trader/domain/models/crytpo_coin.dart';
 import 'package:dio/dio.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
 
 class CryptoCoinRepository {
   CryptoCoinRepository();

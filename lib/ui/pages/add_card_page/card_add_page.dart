@@ -1,9 +1,14 @@
 import 'dart:math';
 import 'package:crypto_trader/ui/pages/add_card_page/card_text_utils.dart';
+import 'package:crypto_trader/ui/routes/app_navigator.dart';
+import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/colors_for_cards.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+
 // import 'package:image/image.dart' as Image;
 
 class AddCardPage extends StatefulWidget {
@@ -211,18 +216,56 @@ class _AddCardPage extends State<AddCardPage> with TickerProviderStateMixin {
                       }),
                 ),
                 const Spacer(),
-                Container(
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient:
-                          LinearGradient(colors: gradientList[selectedIndex])),
-                  alignment: Alignment.center,
-                  child: TextUtil(
-                    text: "Save",
-                  ),
-                )
+              Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    Expanded(
+      child: GestureDetector(
+        onTap: () {
+          //
+          //
+          //
+        },
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              colors: gradientList[selectedIndex],
+            ),
+          ),
+          alignment: Alignment.center,
+          child: TextUtil(
+            text: "Сохранить",
+          ),
+        ),
+      ),
+    ),
+    SizedBox(width: 10),
+    Expanded(
+      child: GestureDetector(
+        onTap: () {
+          context.goNamed(AppRoutes.home);
+          // AppNavigator.router.goNamed(AppRoutes.home);
+        },
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              colors: gradientList[selectedIndex],
+            ),
+          ),
+          alignment: Alignment.center,
+          child: TextUtil(
+            text: "Назад",
+          ),
+        ),
+      ),
+    ),
+  ],
+),
+
               ],
             ),
           ),
