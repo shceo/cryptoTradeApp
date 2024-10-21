@@ -1,17 +1,19 @@
-import 'package:crypto_trader/crypto_app.dart';
-import 'package:crypto_trader/domain/providers/add_card_provider.dart';
-import 'package:crypto_trader/domain/providers/aisoon_provider.dart';
-import 'package:crypto_trader/domain/providers/currencyvswindow.dart';
-import 'package:crypto_trader/domain/providers/favoritelist_provider.dart';
-import 'package:crypto_trader/domain/providers/image_picker_provider.dart';
-import 'package:crypto_trader/domain/providers/settingsmodels_provider.dart';
-import 'package:crypto_trader/domain/providers/tab_bar_model.dart';
-import 'package:crypto_trader/domain/providers/userbalance_provider.dart';
+import 'dart:async';
+
+import 'package:crypto_trader/src/crypto_app.dart';
+import 'package:crypto_trader/src/data/providers/add_card_provider.dart';
+import 'package:crypto_trader/src/data/providers/aisoon_provider.dart';
+import 'package:crypto_trader/src/data/providers/currencyvswindow.dart';
+import 'package:crypto_trader/src/data/providers/favoritelist_provider.dart';
+import 'package:crypto_trader/src/data/providers/image_picker_provider.dart';
+import 'package:crypto_trader/src/data/providers/settingsmodels_provider.dart';
+import 'package:crypto_trader/src/data/providers/tab_bar_model.dart';
+import 'package:crypto_trader/src/data/providers/userbalance_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'src/firebase_options.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
