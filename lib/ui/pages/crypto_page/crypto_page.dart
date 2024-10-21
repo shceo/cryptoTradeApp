@@ -1,5 +1,5 @@
-import 'package:crypto_trader/blocs/crypto_bloc/crypto_bloc_bloc.dart';
-import 'package:crypto_trader/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_bloc/crypto_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
 import 'package:crypto_trader/components/crypto_line.dart';
 import 'package:crypto_trader/domain/models/crytpo_coin.dart';
 import 'package:crypto_trader/domain/providers/favoritelist_provider.dart';

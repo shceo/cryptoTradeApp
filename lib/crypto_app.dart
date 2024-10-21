@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import 'package:crypto_trader/blocs/authorization_bloc/authentication_bloc.dart';
-import 'package:crypto_trader/blocs/crypto_bloc/crypto_bloc_bloc.dart';
-import 'package:crypto_trader/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
-import 'package:crypto_trader/blocs/splash_bloc/splash_screen_bloc.dart';
+import 'package:crypto_trader/domain/blocs/authorization_bloc/authentication_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_bloc/crypto_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/splash_bloc/splash_screen_bloc.dart';
 import 'package:crypto_trader/ui/routes/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

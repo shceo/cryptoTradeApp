@@ -1,4 +1,4 @@
-import 'package:crypto_trader/blocs/authorization_bloc/authentication_bloc.dart';
+import 'package:crypto_trader/domain/blocs/authorization_bloc/authentication_bloc.dart';
 import 'package:crypto_trader/ui/pages/add_card_page/card_add_page.dart';
 import 'package:crypto_trader/ui/pages/crypto_page/crypto_page.dart';
 import 'package:crypto_trader/ui/pages/ctb_ai_page/ctb_ai.dart';

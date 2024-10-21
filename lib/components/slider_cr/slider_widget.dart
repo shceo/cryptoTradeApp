@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:crypto_trader/blocs/crypto_bloc/crypto_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_bloc/crypto_bloc_bloc.dart';
 import 'package:crypto_trader/components/crypto_line.dart';
 import 'package:crypto_trader/domain/models/crytpo_coin.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';

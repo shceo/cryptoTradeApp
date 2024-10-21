@@ -1,4 +1,4 @@
-import 'package:crypto_trader/blocs/crypto_bloc/crypto_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_bloc/crypto_bloc_bloc.dart';
 import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:flutter/material.dart';

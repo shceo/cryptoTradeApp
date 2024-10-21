@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import 'package:crypto_trader/blocs/splash_bloc/splash_screen_bloc.dart';
+import 'package:crypto_trader/domain/blocs/splash_bloc/splash_screen_bloc.dart';
 import 'package:crypto_trader/ui/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

@@ -1,4 +1,4 @@
-import 'package:crypto_trader/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
+import 'package:crypto_trader/domain/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
 import 'package:crypto_trader/ui/theme/crypto_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';

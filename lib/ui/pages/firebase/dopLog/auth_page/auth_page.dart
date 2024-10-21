@@ -1,4 +1,4 @@
-import 'package:crypto_trader/blocs/authorization_bloc/authentication_bloc.dart';
+import 'package:crypto_trader/domain/blocs/authorization_bloc/authentication_bloc.dart';
 import 'package:crypto_trader/ui/pages/firebase/login_page/login_page.dart';
 import 'package:crypto_trader/ui/pages/firebase/register_page/register_page.dart';
 import 'package:flutter/material.dart';
