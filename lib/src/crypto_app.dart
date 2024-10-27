@@ -1,8 +1,5 @@
-import 'package:crypto_trader/src/data/blocs/authorization_bloc/authentication_bloc.dart';
-import 'package:crypto_trader/src/data/blocs/crypto_bloc/crypto_bloc_bloc.dart';
-import 'package:crypto_trader/src/data/blocs/crypto_history_bloc/bloc/crypto_history_bloc_bloc.dart';
-import 'package:crypto_trader/src/data/blocs/splash_bloc/splash_screen_bloc.dart';
-import 'package:crypto_trader/src/ui/routes/app_navigator.dart';
+
+import 'package:crypto_trader/src/exports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

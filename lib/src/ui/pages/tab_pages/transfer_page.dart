@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import 'package:crypto_trader/src/ui/pages/transfer_page_deteils/deteil_page.dart';
-import 'package:crypto_trader/src/ui/theme/crypto_colors.dart';
+
+import 'package:crypto_trader/src/exports.dart';
 import 'package:flutter/material.dart';
 
 class Transfer extends StatelessWidget {

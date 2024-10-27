@@ -1,4 +1,4 @@
-import 'package:crypto_trader/src/data/blocs/authorization_bloc/authentication_bloc.dart';
+import 'package:crypto_trader/src/exports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
